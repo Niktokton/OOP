@@ -1,6 +1,10 @@
 ﻿#include <iostream>
 using namespace std;
 
+/**
+ * @brief Заполняет массив случайными числами.
+ * @param arr Массив из 10 элементов.
+ */
 void fillArray(int(&arr)[10])
 {
     for (int& x : arr)
@@ -9,6 +13,10 @@ void fillArray(int(&arr)[10])
     }
 }
 
+/**
+ * @brief Выводит массив на экран.
+ * @param arr Массив из 10 элементов.
+ */
 void printArray(int(&arr)[10])
 {
     for (auto x : arr)
@@ -18,6 +26,12 @@ void printArray(int(&arr)[10])
     cout << "\n";
 }
 
+/**
+ * @brief Меняет местами два элемента массива.
+ * @param arr Массив из 10 элементов.
+ * @param index1 Индекс первого элемента.
+ * @param index2 Индекс второго элемента.
+ */
 void swapElements(int(&arr)[10], int& index1, int& index2)
 {
     int tmp = arr[index1];
@@ -25,6 +39,10 @@ void swapElements(int(&arr)[10], int& index1, int& index2)
     arr[index2] = tmp;
 }
 
+/**
+ * @brief Умножает каждый элемент массива на два.
+ * @param arr Массив из 10 элементов.
+ */
 void multiplyByTwo(int(&arr)[10])
 {
     for (int &x : arr)

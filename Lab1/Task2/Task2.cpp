@@ -1,6 +1,11 @@
 ﻿#include <iostream>
 using namespace std;
 
+/**
+ * @brief Заполняет массив случайными числами.
+ * @param arr Ссылка на указатель массива.
+ * @param size Размер массива.
+ */
 void fillArray(int*& arr, int size)
 {
     for (int i = 0; i < size; ++i)
@@ -9,6 +14,11 @@ void fillArray(int*& arr, int size)
     }
 }
 
+/**
+ * @brief Выводит массив на экран.
+ * @param arr Ссылка на указатель массива.
+ * @param size Размер массива.
+ */
 void printArray(int*& arr, int size)
 {
     for (int i = 0; i < size; ++i)
@@ -18,6 +28,12 @@ void printArray(int*& arr, int size)
     cout << "\n";
 }
 
+/**
+ * @brief Обрабатывает динамический массив.
+ * Находит первый отрицательный элемент и удаляет его и все последующие элементы.
+ * @param arr Ссылка на указатель массива.
+ * @param size Размер массива.
+ */
 void process(int*& arr, int size)
 {
     int firstNegative = -1;
