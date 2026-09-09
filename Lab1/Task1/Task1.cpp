@@ -15,7 +15,7 @@ void printArray(int(&arr)[10])
     {
         cout << x << " ";
     }
-    cout << endl;
+    cout << "\n";
 }
 
 void swapElements(int(&arr)[10], int& index1, int& index2)
