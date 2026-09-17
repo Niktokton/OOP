@@ -61,8 +61,8 @@ int main()
 
     printArray(arr);
 
-    int index1 = 1;
-    int index2 = 2;
+    int index1 = 25;
+    int index2 = 23;
 
     swapElements(arr, index1, index2);
 

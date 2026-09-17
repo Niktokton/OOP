@@ -76,9 +76,12 @@ int main()
 
     int newArrSize = 0;
 
-    while (newArrSize < N && arr[newArrSize] >= 0)
+    if (arr != nullptr)
     {
-        ++newArrSize;
+        while (newArrSize < N && arr[newArrSize] > 0)
+        {
+            ++newArrSize;
+        }
     }
 
     cout << "Новый Массив: ";
