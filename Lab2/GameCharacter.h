@@ -20,8 +20,8 @@ class GameCharacter
         int level;
         int CurrentHealth;
         int MaxHealith;
-        double expirience;
-        bool IsAlive;
+        double experience;
+        bool alive;
         CharacterStats stats;
         static int objectCount;
     
