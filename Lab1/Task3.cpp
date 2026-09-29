@@ -119,10 +119,10 @@ int main()
     cout << "Изменённый Массив: ";
     printSafe(myArr);
 
+    cout << "Пример выхода за границы: \n";
     getElement(myArr, myArr.size);
 
     cout << "\nИзменение размера с N до N - 1\n";
-
     reSizeArray(myArr, myArr.size, myArr.size - 1);
     printSafe(myArr);
 
