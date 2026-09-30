@@ -46,7 +46,6 @@ class GameCharacter
     void heal(int amount);
     void gainExperience(double amount);
 
-    void increaseStrength(int amount);
     void increaseVitality(int amount);
     void increaseAttunement(int amount);
     void increaseEendurance(int amount);

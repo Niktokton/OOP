@@ -153,6 +153,106 @@ void GameCharacter::gainExperience(double amount)
     }
 }
 
+void increaseVitality(int amount);
+{
+    if (amount <= 0)
+        throw std::invalid_argument(
+            "Vitality increase must be greater than 0"
+        );
+
+    stats.vitality += amount;
+}
+
+void increaseAttunement(int amount);
+{
+    if (amount <= 0)
+        throw std::invalid_argument(
+            "Attunement increase must be greater than 0"
+        );
+
+    stats.attunement += amount;
+}
+
+void increaseEndurance(int amount);
+{
+    if (amount <= 0)
+        throw std::invalid_argument(
+            "Endurance increase must be greater than 0"
+        );
+
+    stats.endurance += amount;
+}
+
+void increaseStrength(int amount);
+{
+    if (amount <= 0)
+        throw std::invalid_argument(
+            "Strength increase must be greater than 0"
+        );
+
+    stats.strength += amount;
+}
+
+void increaseDexterity(int amount);
+{
+    if (amount <= 0)
+        throw std::invalid_argument(
+            "Dexterity increase must be greater than 0"
+        );
+
+    stats.dexterity += amount;
+}
+
+void increaseResistance(int amount);
+{
+    if (amount <= 0)
+        throw std::invalid_argument(
+            "Resistance increase must be greater than 0"
+        );
+
+    stats.resistance += amount;
+}
+
+void increaseIntelligence(int amount);
+{
+    if (amount <= 0)
+        throw std::invalid_argument(
+            "Intelligence increase must be greater than 0"
+        );
+
+    stats.intelligence += amount;
+}
+
+void increaseFaith(int amount);
+{
+    if (amount <= 0)
+        throw std::invalid_argument(
+            "Faith increase must be greater than 0"
+        );
+
+    stats.faith += amount;
+}
+
+void GameCharacter::printInfo() const
+{
+    std::cout << "-----------------------------" << std::endl;
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Level: " << level << std::endl;
+    std::cout << "Health: " << health << "/" << maxHealth << std::endl;
+    std::cout << "Experience: " << experience << std::endl;
+    std::cout << "Alive: " << (alive ? "yes" : "no") << std::endl;
+    std::cout << "Stats:" << std::endl;
+    std::cout << "  Vitality: " << stats.vitality << std::endl;
+    std::cout << "  Attunement: " << stats.attunement << std::endl;
+    std::cout << "  Endurance: " << stats.endurance << std::endl;
+    std::cout << "  Strength: " << stats.strength << std::endl;
+    std::cout << "  Dexterity: " << stats.dexterity << std::endl;
+    std::cout << "  Resistance: " << stats.resistance << std::endl;
+    std::cout << "  Intelligence: " << stats.intelligence << std::endl;
+    std::cout << "  Faith: " << stats.faith << std::endl;
+    std::cout << "-----------------------------" << std::endl;
+}
+
 int GameCharacter::getObjectCount()
 {
     return objectCount;
