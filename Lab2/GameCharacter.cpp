@@ -1,25 +1,26 @@
 #include "GameCharacter.h"
-
+#include <iostream>
+#include <stdexcept>
 
 int GameCharacter::objectCount = 0;
 
 GameCharacter::GameCharacter()
-    : name("Anon"),
-      level(1),
+    : name("Deprived"),
+      level(6),
       CurrentHealth(100),
-      MaxHealith(100),
+      MaxHealth(100),
       experience(0.0),
       alive(true),
-      stats(10, 10, 10, 10, 10, 10, 10, 10)
+      stats{11, 11, 11, 11, 11, 11, 11, 11}
 {
     ++objectCount;
 }
 
-GameCharacter::GameCharacter(const std::string& name, int level, int MaxHealth, double experience, const CharacterStats& stats)()
+GameCharacter::GameCharacter(const std::string& name, int level, int MaxHealth, double experience, const CharacterStats& stats)
     : name(name),
       level(level),
       CurrentHealth(MaxHealth),
-      MaxHealith(MaxHealth),
+      MaxHealth(MaxHealth),
       experience(experience),
       alive(true),
       stats(stats)
@@ -30,7 +31,7 @@ GameCharacter::GameCharacter(const std::string& name, int level, int MaxHealth, 
     if (level < 1)
         throw std::invalid_argument("Level must be at least 1");
 
-    if (maxHealth <= 0)
+    if (MaxHealth <= 0)
         throw std::invalid_argument("Max health must be greater than 0");
 
     if (experience < 0.0)
@@ -55,8 +56,8 @@ GameCharacter::GameCharacter(const std::string& name, int level, int MaxHealth, 
 GameCharacter::GameCharacter(const GameCharacter& other)
     : name(other.name),
       level(other.level),
-      CurrentHealth(other.health),
-      MaxHealith(other.maxHealth),
+      CurrentHealth(other.CurrentHealth),
+      MaxHealth(other.MaxHealth),
       experience(other.experience),
       alive(other.alive),
       stats(other.stats)
@@ -81,14 +82,14 @@ int GameCharacter::getLevel() const
     return level;
 }
 
-int GameCharacter::getHealth() const
+int GameCharacter::getCurrentHealth() const
 {
-    return health;
+    return CurrentHealth;
 }
 
 int GameCharacter::getMaxHealth() const
 {
-    return maxHealth;
+    return MaxHealth;
 }
 
 double GameCharacter::getExperience() const
@@ -114,11 +115,11 @@ void GameCharacter::takeDamage(int damage)
     if (!alive)
         throw std::logic_error("Character is already dead");
 
-    health -= damage;
+    CurrentHealth -= damage;
 
-    if (health <= 0)
+    if (CurrentHealth <= 0)
     {
-        health = 0;
+        CurrentHealth = 0;
         alive = false;
     }
 }
@@ -131,10 +132,10 @@ void GameCharacter::heal(int amount)
     if (!alive)
         throw std::logic_error("Dead character cannot be healed");
 
-    health += amount;
+    CurrentHealth += amount;
 
-    if (health > maxHealth)
-        health = maxHealth;
+    if (CurrentHealth > MaxHealth)
+        CurrentHealth = MaxHealth;
 }
 
 void GameCharacter::gainExperience(double amount)
@@ -148,12 +149,12 @@ void GameCharacter::gainExperience(double amount)
     {
         experience -= 100.0;
         ++level;
-        maxHealth += 10;
-        health = maxHealth;
+        MaxHealth += 10;
+        CurrentHealth = MaxHealth;
     }
 }
 
-void increaseVitality(int amount);
+void GameCharacter::increaseVitality(int amount)
 {
     if (amount <= 0)
         throw std::invalid_argument(
@@ -163,7 +164,7 @@ void increaseVitality(int amount);
     stats.vitality += amount;
 }
 
-void increaseAttunement(int amount);
+void GameCharacter::increaseAttunement(int amount)
 {
     if (amount <= 0)
         throw std::invalid_argument(
@@ -173,7 +174,7 @@ void increaseAttunement(int amount);
     stats.attunement += amount;
 }
 
-void increaseEndurance(int amount);
+void GameCharacter::increaseEndurance(int amount)
 {
     if (amount <= 0)
         throw std::invalid_argument(
@@ -183,7 +184,7 @@ void increaseEndurance(int amount);
     stats.endurance += amount;
 }
 
-void increaseStrength(int amount);
+void GameCharacter::increaseStrength(int amount)
 {
     if (amount <= 0)
         throw std::invalid_argument(
@@ -193,7 +194,7 @@ void increaseStrength(int amount);
     stats.strength += amount;
 }
 
-void increaseDexterity(int amount);
+void GameCharacter::increaseDexterity(int amount)
 {
     if (amount <= 0)
         throw std::invalid_argument(
@@ -203,7 +204,7 @@ void increaseDexterity(int amount);
     stats.dexterity += amount;
 }
 
-void increaseResistance(int amount);
+void GameCharacter::increaseResistance(int amount)
 {
     if (amount <= 0)
         throw std::invalid_argument(
@@ -213,7 +214,7 @@ void increaseResistance(int amount);
     stats.resistance += amount;
 }
 
-void increaseIntelligence(int amount);
+void GameCharacter::increaseIntelligence(int amount)
 {
     if (amount <= 0)
         throw std::invalid_argument(
@@ -223,7 +224,7 @@ void increaseIntelligence(int amount);
     stats.intelligence += amount;
 }
 
-void increaseFaith(int amount);
+void GameCharacter::increaseFaith(int amount)
 {
     if (amount <= 0)
         throw std::invalid_argument(
@@ -238,7 +239,7 @@ void GameCharacter::printInfo() const
     std::cout << "-----------------------------" << std::endl;
     std::cout << "Name: " << name << std::endl;
     std::cout << "Level: " << level << std::endl;
-    std::cout << "Health: " << health << "/" << maxHealth << std::endl;
+    std::cout << "Health: " << CurrentHealth << "/" << MaxHealth << std::endl;
     std::cout << "Experience: " << experience << std::endl;
     std::cout << "Alive: " << (alive ? "yes" : "no") << std::endl;
     std::cout << "Stats:" << std::endl;

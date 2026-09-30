@@ -1,0 +1,58 @@
+@startuml
+
+title GameCharacter - Class Diagram
+
+class CharacterStats {
+    +vitality : int
+    +attunement : int
+    +endurance : int
+    +strength : int
+    +dexterity : int
+    +resistance : int
+    +intelligence : int
+    +faith : int
+}
+
+class GameCharacter {
+    -name : string
+    -level : int
+    -CurrentHealth : int
+    -MaxHealth : int
+    -experience : double
+    -alive : bool
+    -stats : CharacterStats
+    -{static} objectCount : int
+
+    +GameCharacter()
+    +GameCharacter(name : string, level : int, MaxHealth : int, experience : double, stats : CharacterStats)
+    +GameCharacter(other : GameCharacter)
+    +~GameCharacter()
+
+    +getName() : string
+    +getLevel() : int
+    +getCurrentHealth() : int
+    +getMaxHealth() : int
+    +getExperience() : double
+    +isAlive() : bool
+    +getStats() : CharacterStats
+
+    +takeDamage(damage : int) : void
+    +heal(amount : int) : void
+    +gainExperience(amount : double) : void
+
+    +increaseVitality(amount : int) : void
+    +increaseAttunement(amount : int) : void
+    +increaseEndurance(amount : int) : void
+    +increaseStrength(amount : int) : void
+    +increaseDexterity(amount : int) : void
+    +increaseResistance(amount : int) : void
+    +increaseIntelligence(amount : int) : void
+    +increaseFaith(amount : int) : void
+
+    +printInfo() : void
+    +{static} getObjectCount() : int
+}
+
+GameCharacter *-- CharacterStats : Содержит
+
+@enduml
