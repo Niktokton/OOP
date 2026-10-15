@@ -30,10 +30,10 @@ int main()
     Vector3D original(3.0, 4.0, 5.0);
     Vector3D copy(original);
 
-    cout << "Original: ";
+    cout << "\nOriginal: ";
     original.print();
 
-    cout << "Copy: ";
+    cout << "\nCopy: ";
     copy.print();
 
     cout << "Created objects: " << Vector3D::getCreatedCount() << endl;
