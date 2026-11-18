@@ -9,26 +9,6 @@ using namespace std;
 
 int main() {
     const int COUNT = 10;
-    ifstream checkFile("vectors.txt");
-
-    if (!checkFile) {
-        ofstream createFile("vectors.txt");
-
-        createFile << "3 1 2 3\n";
-        createFile << "3 4 5 6\n";
-        createFile << "3 2 3 4\n";
-        createFile << "3 5 6 7\n";
-        createFile << "3 1 1 1\n";
-        createFile << "3 2 2 2\n";
-        createFile << "3 3 3 3\n";
-        createFile << "3 4 4 4\n";
-        createFile << "3 5 5 5\n";
-        createFile << "3 6 6 6\n";
-
-        createFile.close();
-    }
-
-    checkFile.close();
 
     MathVector<double, 2> vectors[COUNT];
 

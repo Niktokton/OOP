@@ -1,0 +1,50 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam backgroundColor #FEFEFE
+
+class "MathVector<T, InitialCapacity>" as MathVector {
+    -- Private --
+    - data: T*
+    - size: size_t
+    - capacity: size_t
+    {static} - totalMemory: size_t
+    
+    - reserve(newCapacity: size_t): void
+    
+    -- Public --
+    + MathVector()
+    + MathVector(other: const MathVector&)
+    + operator=(other: const MathVector&): MathVector&
+    + ~MathVector()
+    + pushBack(value: T): void
+    + operator[](index: size_t): T&
+    + operator[](index: size_t) const: const T&
+    + getSize() const: size_t
+    + operator+(other: const MathVector&): MathVector
+    + operator-(other: const MathVector&): MathVector
+    {static} + getTotalMemory(): size_t
+    
+    {friend} + printVector(v: const MathVector<U, N>&): void
+}
+
+package "Global Functions" {
+    class "printVector<T, N>" as PrintFunc {
+        <<template>>
+        + printVector(v: const MathVector<T, N>&): void
+    }
+
+    class "dotProduct<T, N>" as DotFunc {
+        <<template>>
+        + dotProduct(a: const MathVector<T, N>&, b: const MathVector<T, N>&): T
+    }
+
+    class "dotProduct<double, 2>" as DotSpecialization {
+        <<specialization>>
+        + dotProduct(a: const MathVector<double, 2>&, b: const MathVector<double, 2>&): double
+    }
+}
+
+MathVector ..> PrintFunc : <<friend>>
+DotFunc <|-- DotSpecialization : <<specializes>>
+
+@enduml
